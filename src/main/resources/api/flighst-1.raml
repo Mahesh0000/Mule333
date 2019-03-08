@@ -1,0 +1,82 @@
+#%RAML 1.0
+version: v1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/f96a3c76-935a-4e5d-9475-783f9490f34d/ # 
+title: Flighst-1
+
+/Flights:
+ get:
+   queryParameters:
+     destination:
+      required: true
+      enum: [SFO,LAX,HYD]
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+             [{"ID": 1,
+               "destination": "SFO",
+               "price": 540.30,
+               "origin": "IND",
+               "departuredate": "12/02/2019"},
+               {"ID": 2,
+               "destination": "LAX",
+               "price": 380.89,
+               "origin": "IND",
+               "departuredate": "17/02/2019"}]
+ post:
+   displayName: Add the Flight               
+   body:
+     application/json:
+       example:
+         {"ID": 1,
+          "Price": 540.25,
+          "destination": "SFO",
+          "origin": "Mua",
+          "Totalseats": 0,
+          "emptyseats": 2}
+   responses:
+     201:
+       body:
+         application/json:
+           example:
+             {"Message": "Flights added (but not really)"}  
+/{id}:
+ get:
+  responses:
+    200:
+      body:
+        application/json:
+          example:
+           {"ID": 1,
+          "Price": 540.25,
+          "destination": "SFO",
+          "origin": "Mua",
+          "Totalseats": 0,
+          "emptyseats": 2}
+ delete:
+  responses:
+    200:
+      body:
+        application/json:
+          example:
+            {"Message": "Flights deleted (but not really)"}   
+ put:
+   displayName: update Flight
+   body:
+     application/json:
+       example:
+         {"ID": 1,
+          "Price": 540.25,
+          "destination": "SFO",
+          "origin": "Mua",
+          "Totalseats": 0,
+          "emptyseats": 2}  
+   responses:
+     200:
+       body:
+         application/json:
+           example:
+            {"Message": "Flights updated (but not really)"}
+                                     
+                               
